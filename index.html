@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hariz-amelia-weddinginvitation.pages.dev/" />
   <meta property="og:title" content="Walimatulurus Hariz &amp; Amelia" />
-  <meta property="og:description" content="Sabtu, 2 Januari 2027 · Dewan Majlis Perbandaran Teluk Intan. Anda dijemput hadir 🌸" />
+  <meta property="og:description" content="Sabtu, 2 Januari 2027 · Dewan Majlis Perbandaran Teluk Intan. Anda dijemput hadir." />
   <meta property="og:image" content="https://hariz-amelia-weddinginvitation.pages.dev/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -70,6 +70,21 @@
         <path d="M50 96 C18 70 22 30 50 4 C78 30 82 70 50 96Z" fill="var(--leaf, #81c784)" />
         <path d="M50 90 V16" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" />
       </symbol>
+
+      <!-- Outline icons for buttons: <svg class="icon"><use href="#i-name" /></svg> -->
+      <symbol id="i-mail-open" viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="m3 10.5 9 6 9-6" /></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M3 10h18M8 3v4M16 3v4" /></symbol>
+      <symbol id="i-calendar-plus" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5" /></symbol>
+      <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m8 12.5 2.7 2.7L16 9.5" /></symbol>
+      <symbol id="i-x-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m9 9 6 6M15 9l-6 6" /></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" /></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" /></symbol>
+      <symbol id="i-scroll" viewBox="0 0 24 24"><path d="m7 6 5 5 5-5M7 13l5 5 5-5" /></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="17" cy="16" r="3" /></symbol>
+      <symbol id="i-music-off" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="17" cy="16" r="3" /><path d="m3 3 18 18" /></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.1-4.1A8 8 0 1 1 20 11.5z" /></symbol>
     </defs>
   </svg>
 
@@ -94,7 +109,7 @@
       </div>
       <p class="date-line" data-bind="dateLong"></p>
       <p class="to">Kepada tetamu yang dihormati</p>
-      <button id="openBtn" class="btn btn-primary">🌸 Buka Jemputan</button>
+      <button id="openBtn" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="#i-mail-open" /></svg> Buka Jemputan</button>
     </div>
   </div>
 
@@ -145,8 +160,8 @@
         <p class="small" data-bind="venueAddress"></p>
         <p class="label">Simpan Tarikh</p>
         <div class="actions">
-          <a id="calendarBtn" class="btn btn-primary" target="_blank" rel="noopener">📅 Google Calendar <small>(Android)</small></a>
-          <a id="icsBtn" class="btn btn-ghost" href="wedding.ics">🗓️ Apple Calendar <small>(iOS)</small></a>
+          <a id="calendarBtn" class="btn btn-primary" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-calendar" /></svg> Google Calendar <small>(Android)</small></a>
+          <a id="icsBtn" class="btn btn-ghost" href="wedding.ics"><svg class="icon" aria-hidden="true"><use href="#i-calendar-plus" /></svg> Apple Calendar <small>(iOS)</small></a>
         </div>
       </div>
     </section>
@@ -210,8 +225,8 @@
         <label>No. Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="01X-XXXXXXX" /></label>
         <fieldset class="choice">
           <legend>Kehadiran</legend>
-          <label><input type="radio" name="attend" value="Hadir" checked /> <span>🎉 Hadir</span></label>
-          <label><input type="radio" name="attend" value="Tidak Hadir" /> <span>😢 Tidak Hadir</span></label>
+          <label><input type="radio" name="attend" value="Hadir" checked /> <span><svg class="icon" aria-hidden="true"><use href="#i-check-circle" /></svg> Hadir</span></label>
+          <label><input type="radio" name="attend" value="Tidak Hadir" /> <span><svg class="icon" aria-hidden="true"><use href="#i-x-circle" /></svg> Tidak Hadir</span></label>
         </fieldset>
         <label id="paxField">Bilangan Tetamu
           <select name="pax">
@@ -249,7 +264,7 @@
         <p class="value account" data-bind="bankAccount"></p>
         <p class="small" id="bankHolder" data-bind="bankHolder"></p>
         <div class="actions">
-          <button id="copyBtn" class="btn btn-ghost" type="button">📋 Salin No. Akaun</button>
+          <button id="copyBtn" class="btn btn-ghost" type="button"><svg class="icon" aria-hidden="true"><use href="#i-copy" /></svg> Salin No. Akaun</button>
         </div>
       </div>
     </section>
@@ -289,8 +304,8 @@
 
   <!-- Floating controls -->
   <div class="fab-group" hidden id="fabs">
-    <button id="scrollBtn" class="fab" aria-label="Auto scroll" title="Auto scroll">⏸</button>
-    <button id="musicBtn" class="fab" aria-label="Lagu" title="Lagu">♫</button>
+    <button id="scrollBtn" class="fab" aria-label="Auto scroll" title="Auto scroll"><svg class="icon" aria-hidden="true"><use href="#i-pause" /></svg></button>
+    <button id="musicBtn" class="fab" aria-label="Lagu" title="Lagu"><svg class="icon" aria-hidden="true"><use href="#i-music" /></svg></button>
   </div>
 
   <script src="https://w.soundcloud.com/player/api.js"></script>

@@ -61,6 +61,8 @@ const CONFIG = {
 // =====================================================================
 
 const $ = (id) => document.getElementById(id);
+// Outline icon from the sprite in index.html, e.g. icon("phone")
+const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}" /></svg>`;
 const startDate = new Date(CONFIG.start);
 const endDate = new Date(CONFIG.end);
 const TZ = "Asia/Kuala_Lumpur";
@@ -225,7 +227,7 @@ rsvpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = { type: "rsvp", ...Object.fromEntries(new FormData(rsvpForm)) };
   if (data.attend !== "Hadir") data.pax = "0";
-  const thanks = data.attend === "Hadir" ? "Terima kasih! Kami nantikan kehadiran anda 🌸" : "Terima kasih atas makluman anda 🌸";
+  const thanks = data.attend === "Hadir" ? "Terima kasih! Kami nantikan kehadiran anda." : "Terima kasih atas makluman anda.";
 
   if (!CONFIG.scriptUrl) {
     whatsappTo(`RSVP Walimatulurus ${CONFIG.groom} & ${CONFIG.bride}\nNama: ${data.name}\nTelefon: ${data.phone || "-"}\nKehadiran: ${data.attend}\nBilangan: ${data.pax}`);
@@ -252,7 +254,7 @@ function renderWishes(list) {
   if (!list.length) {
     const p = document.createElement("p");
     p.className = "empty";
-    p.textContent = "Jadilah yang pertama menghantar ucapan 💐";
+    p.textContent = "Jadilah yang pertama menghantar ucapan.";
     wishList.append(p);
     return;
   }
@@ -286,8 +288,8 @@ wishForm.addEventListener("submit", async (e) => {
     renderWishes(wishes);
     wishForm.reset();
     setStatus(wishForm, CONFIG.scriptUrl
-      ? "Terima kasih! Ucapan anda akan dipaparkan selepas disemak 💕"
-      : "Terima kasih atas ucapan anda 💕");
+      ? "Terima kasih! Ucapan anda akan dipaparkan selepas disemak."
+      : "Terima kasih atas ucapan anda.");
   };
 
   if (!CONFIG.scriptUrl) {
@@ -318,11 +320,11 @@ $("copyBtn").addEventListener("click", async () => {
   const btn = $("copyBtn");
   try {
     await navigator.clipboard.writeText(CONFIG.bank.account);
-    btn.textContent = "✅ Disalin!";
+    btn.innerHTML = `${icon("check")} Disalin!`;
   } catch {
     btn.textContent = CONFIG.bank.account;
   }
-  setTimeout(() => (btn.textContent = "📋 Salin No. Akaun"), 2500);
+  setTimeout(() => (btn.innerHTML = `${icon("copy")} Salin No. Akaun`), 2500);
 });
 
 // ---- Hubungi ----
@@ -338,14 +340,14 @@ CONFIG.contacts.forEach((c) => {
   const call = document.createElement("a");
   call.className = "call";
   call.href = `tel:+${c.phone}`;
-  call.textContent = "📞";
+  call.innerHTML = icon("phone");
   call.setAttribute("aria-label", `Telefon ${c.name}`);
   const wa = document.createElement("a");
   wa.className = "wa";
   wa.href = `https://wa.me/${c.phone}`;
   wa.target = "_blank";
   wa.rel = "noopener";
-  wa.textContent = "💬";
+  wa.innerHTML = icon("chat");
   wa.setAttribute("aria-label", `WhatsApp ${c.name}`);
   row.append(info, call, wa);
   $("contacts").append(row);
@@ -417,7 +419,7 @@ const song = CONFIG.song.file ? filePlayer(CONFIG.song) : soundcloudPlayer(CONFI
 const musicBtn = $("musicBtn");
 function setMusicUI() {
   musicBtn.classList.toggle("spin", song.playing);
-  musicBtn.textContent = song.playing ? "♫" : "🔇";
+  musicBtn.innerHTML = icon(song.playing ? "music" : "music-off");
 }
 song.onChange(setMusicUI);
 musicBtn.addEventListener("click", () => (song.playing ? song.pause() : song.play()));
@@ -448,7 +450,7 @@ function step(t) {
 function setAutoScroll(on) {
   autoScroll = on;
   pos = scrollY;
-  scrollBtn.textContent = on ? "⏸" : "⏬";
+  scrollBtn.innerHTML = icon(on ? "pause" : "scroll");
 }
 scrollBtn.addEventListener("click", () => {
   userPaused = false;
