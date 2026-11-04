@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Walimatulurus Hariz &amp; Amelia</title>
+  <meta name="description" content="Jemputan ke majlis perkahwinan Hariz &amp; Amelia, 2 Januari 2027, Teluk Intan." />
+  <meta name="theme-color" content="#fff4ec" />
+
+  <!-- Link preview card for WhatsApp, Facebook, Telegram etc.
+       Uses the GitHub Pages address; change it here if the site moves (keep the trailing /). -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://just-hariz.github.io/hariz-amelia-wedding-invitation/" />
+  <meta property="og:title" content="Walimatulurus Hariz &amp; Amelia" />
+  <meta property="og:description" content="Sabtu, 2 Januari 2027 · Dewan Majlis Perbandaran Teluk Intan. Anda dijemput hadir 🌸" />
+  <meta property="og:image" content="https://just-hariz.github.io/hariz-amelia-wedding-invitation/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Amiri&family=Great+Vibes&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="locked">
+
+  <!-- Flower shapes, reused everywhere with <use href="#name">. Colours come from --petal, --center and --leaf. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="daisy" viewBox="0 0 100 100">
+        <g fill="var(--petal, #f06292)">
+          <ellipse cx="50" cy="24" rx="10" ry="20" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(45 50 50)" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(90 50 50)" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(135 50 50)" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(180 50 50)" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(225 50 50)" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(270 50 50)" />
+          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(315 50 50)" />
+        </g>
+        <circle cx="50" cy="50" r="13" fill="var(--center, #ffe082)" />
+        <circle cx="46" cy="46" r="4" fill="#fff" opacity=".6" />
+      </symbol>
+
+      <symbol id="blossom" viewBox="0 0 100 100">
+        <g fill="var(--petal, #ba68c8)">
+          <circle cx="50" cy="29" r="18" />
+          <circle cx="70" cy="43.5" r="18" />
+          <circle cx="62.3" cy="67" r="18" />
+          <circle cx="37.7" cy="67" r="18" />
+          <circle cx="30" cy="43.5" r="18" />
+        </g>
+        <circle cx="50" cy="50" r="11" fill="var(--center, #fff59d)" />
+      </symbol>
+
+      <symbol id="swirl" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="var(--petal, #ff8a80)" />
+        <path d="M45 50 a5 5 0 1 1 10 0 a10 10 0 1 1 -20 0 a15 15 0 1 1 30 0 a20 20 0 1 1 -40 0"
+              fill="none" stroke="var(--center, #c2185b)" stroke-width="4" stroke-linecap="round" opacity=".55" />
+      </symbol>
+
+      <symbol id="tulip" viewBox="0 0 100 100">
+        <path d="M50 62 C50 75 48 88 50 98" fill="none" stroke="var(--leaf, #66bb6a)" stroke-width="4" stroke-linecap="round" />
+        <path d="M50 92 C34 88 26 76 26 64 C40 68 48 78 50 92Z" fill="var(--leaf, #66bb6a)" />
+        <path d="M28 22 C26 50 34 66 50 66 C66 66 74 50 72 22 L61 36 L50 18 L39 36Z" fill="var(--petal, #ffb74d)" />
+        <path d="M50 18 L39 36 L28 22 C27 40 32 56 44 63Z" fill="var(--center, #fff)" opacity=".3" />
+      </symbol>
+
+      <symbol id="leaf" viewBox="0 0 100 100">
+        <path d="M50 96 C18 70 22 30 50 4 C78 30 82 70 50 96Z" fill="var(--leaf, #81c784)" />
+        <path d="M50 90 V16" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Petals drifting down the screen (filled in by script.js) -->
+  <div id="petals" class="petals" aria-hidden="true"></div>
+
+  <!-- Cover: opening the invitation starts the song and auto scroll (browsers require a tap before audio can play) -->
+  <div id="cover" class="cover">
+    <div class="corner tl" aria-hidden="true"></div>
+    <div class="corner tr" aria-hidden="true"></div>
+    <div class="corner bl" aria-hidden="true"></div>
+    <div class="corner br" aria-hidden="true"></div>
+
+    <div class="cover-inner">
+      <p class="eyebrow">Walimatulurus</p>
+      <div class="wreath" id="wreath">
+        <h1 class="script">
+          <span class="groom" data-bind="groom"></span>
+          <span class="amp">&amp;</span>
+          <span class="bride" data-bind="bride"></span>
+        </h1>
+      </div>
+      <p class="date-line" data-bind="dateLong"></p>
+      <p class="to">Kepada tetamu yang dihormati</p>
+      <button id="openBtn" class="btn btn-primary">🌸 Buka Jemputan</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero section">
+      <div class="corner tl" aria-hidden="true"></div>
+      <div class="corner tr" aria-hidden="true"></div>
+      <p class="eyebrow">Walimatulurus</p>
+      <h2 class="script big"><span class="groom" data-bind="groom"></span><br /><span class="amp">&amp;</span><br /><span class="bride" data-bind="bride"></span></h2>
+      <p class="date-line" data-bind="dateLong"></p>
+      <p class="hijri" data-bind="hijri"></p>
+      <p class="venue-line" data-bind="venueName"></p>
+      <div class="flower-row" aria-hidden="true"></div>
+    </section>
+
+    <section class="section invite">
+      <p class="salam">Assalamualaikum w.b.t.</p>
+      <p>Dengan segala hormatnya, kami</p>
+      <p class="parent-names">
+        <span data-bind="brideFather"></span>
+        <span class="amp script">&amp;</span>
+        <span data-bind="brideMother"></span>
+      </p>
+      <p>menjemput<br />Dato' | Datin | Tuan | Puan | Encik | Cik<br />seisi keluarga ke majlis perkahwinan puteri kami</p>
+      <p class="script name bride" data-bind="brideFull"></p>
+      <p class="with">dengan pasangannya</p>
+      <p class="script name groom" data-bind="groomFull"></p>
+    </section>
+
+    <section class="section">
+      <div class="quote-card">
+        <p class="quote" data-bind="quote"></p>
+        <p class="quote-src" data-bind="quoteSource"></p>
+      </div>
+    </section>
+
+    <section class="section" id="majlis">
+      <h3 class="title">Butiran Majlis</h3>
+      <div class="card">
+        <div class="flower-row small" aria-hidden="true"></div>
+        <p class="label">Tarikh</p>
+        <p class="value" data-bind="dateLong"></p>
+        <p class="small" data-bind="hijri"></p>
+        <p class="label">Masa</p>
+        <p class="value" data-bind="timeRange"></p>
+        <p class="label">Tempat</p>
+        <p class="value" data-bind="venueName"></p>
+        <p class="small" data-bind="venueAddress"></p>
+        <p class="label">Simpan Tarikh</p>
+        <div class="actions">
+          <a id="calendarBtn" class="btn btn-primary" target="_blank" rel="noopener">📅 Google Calendar <small>(Android)</small></a>
+          <a id="icsBtn" class="btn btn-ghost" href="wedding.ics">🗓️ Apple Calendar <small>(iOS)</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dresscode">
+      <h3 class="title">Kod Pakaian</h3>
+      <a href="assets/kod-pakaian.webp" target="_blank" rel="noopener" class="dress-photo">
+        <img src="assets/kod-pakaian.webp" width="1056" height="588" loading="lazy"
+             alt="Contoh pakaian tona nude: lelaki berkemeja dan berbatik, wanita berbaju kurung" />
+      </a>
+      <p class="dress-name">Tona Nude</p>
+      <div class="swatches" aria-label="Warna nude: coklat, mocha, nude, beige, krim">
+        <span style="--c:#5a3b30"></span><span style="--c:#8a5f4e"></span><span style="--c:#b8927a"></span><span style="--c:#dcc2a8"></span><span style="--c:#f2e3d3"></span>
+      </div>
+      <p class="small">Coklat · Mocha · Nude · Beige · Krim</p>
+      <p class="small">Lelaki: Kemeja / Batik &nbsp;·&nbsp; Wanita: Baju Kurung</p>
+    </section>
+
+    <section class="section">
+      <h3 class="title">Aturcara Majlis</h3>
+      <ol id="aturcara" class="timeline"></ol>
+    </section>
+
+    <section class="section">
+      <h3 class="title">Menghitung Hari</h3>
+      <div id="countdown" class="countdown">
+        <div><span id="cd-days">0</span><small>Hari</small></div>
+        <div><span id="cd-hours">0</span><small>Jam</small></div>
+        <div><span id="cd-mins">0</span><small>Minit</small></div>
+        <div><span id="cd-secs">0</span><small>Saat</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="lokasi">
+      <h3 class="title">Lokasi</h3>
+      <div class="map-wrap">
+        <iframe id="mapFrame" title="Peta lokasi majlis" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <p class="small" style="margin-top:1rem">Buka arah dengan aplikasi pilihan anda</p>
+      <div class="nav-apps">
+        <a id="gmapsBtn" class="app" target="_blank" rel="noopener">
+          <span class="app-icon gmaps"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c-7.2 0-13 5.6-13 12.6C11 28 24 42 24 42s13-14 13-23.4C37 11.6 31.2 6 24 6z" fill="#ea4335" /><path d="M24 6c-7.2 0-13 5.6-13 12.6 0 2.4.8 5 2 7.6L24 18.6z" fill="#fbbc04" opacity=".9" /><circle cx="24" cy="18.5" r="5" fill="#fff" /></svg></span>
+          Google Maps
+        </a>
+        <a id="wazeBtn" class="app" target="_blank" rel="noopener">
+          <span class="app-icon waze"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c-8 0-14 5.6-14 12.5 0 2.6-1.4 4.4-3 5.5 2.2 1.4 4.4 1.6 6 1.6 2.4 3.2 6.4 5.1 11 5.1 8 0 14-5.6 14-12.2C38 15.6 32 10 24 10z" fill="#fff" stroke="#1d2b36" stroke-width="2" /><circle cx="19.5" cy="20" r="1.8" fill="#1d2b36" /><circle cx="29" cy="20" r="1.8" fill="#1d2b36" /><path d="M18.5 25.5q5.5 4.5 11 0" fill="none" stroke="#1d2b36" stroke-width="2" stroke-linecap="round" /><circle cx="17" cy="36" r="3" fill="#1d2b36" /><circle cx="31" cy="36" r="3" fill="#1d2b36" /></svg></span>
+          Waze
+        </a>
+        <a id="appleBtn" class="app" target="_blank" rel="noopener">
+          <span class="app-icon amaps"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M0 30 L30 0 H38 L0 38Z" fill="#fff" opacity=".85" /><path d="M2 34 L34 2" stroke="#f7c948" stroke-width="2" /><path d="M24 13 L33 35 L24 30 L15 35Z" fill="#1e7cf2" stroke="#fff" stroke-width="2" stroke-linejoin="round" /></svg></span>
+          Apple Maps
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="rsvp">
+      <h3 class="title">RSVP</h3>
+      <p class="small">Sila sahkan kehadiran anda sebelum <strong data-bind="rsvpBy"></strong></p>
+      <form id="rsvpForm" class="form">
+        <label>Nama<input name="name" required autocomplete="name" placeholder="Nama penuh" /></label>
+        <label>No. Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="01X-XXXXXXX" /></label>
+        <fieldset class="choice">
+          <legend>Kehadiran</legend>
+          <label><input type="radio" name="attend" value="Hadir" checked /> <span>🎉 Hadir</span></label>
+          <label><input type="radio" name="attend" value="Tidak Hadir" /> <span>😢 Tidak Hadir</span></label>
+        </fieldset>
+        <label id="paxField">Bilangan Tetamu
+          <select name="pax">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="submit">Hantar RSVP</button>
+        <p class="form-status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="section" id="ucapan">
+      <h3 class="title">Ucapan</h3>
+      <form id="wishForm" class="form">
+        <label>Nama<input name="name" required autocomplete="name" placeholder="Nama anda" /></label>
+        <label>Ucapan<textarea name="message" required rows="3" maxlength="500" placeholder="Tulis ucapan &amp; doa untuk pengantin"></textarea></label>
+        <button class="btn btn-primary alt" type="submit">Hantar Ucapan</button>
+        <p class="form-status" role="status"></p>
+      </form>
+      <div id="wishes" class="wishes"></div>
+    </section>
+
+    <section class="section" id="hadiah">
+      <h3 class="title">Hadiah</h3>
+      <p class="small">Kehadiran dan doa anda sudah cukup bermakna. Bagi yang ingin memberi hadiah, boleh disalurkan melalui:</p>
+      <div class="card gift">
+        <div class="qr">
+          <img id="qrImg" alt="Kod QR DuitNow" />
+          <p id="qrMissing" class="qr-missing" hidden>Letakkan gambar QR DuitNow di<br /><code>assets/qr-duitnow.png</code></p>
+        </div>
+        <p class="label">Bank</p>
+        <p class="value" data-bind="bankName"></p>
+        <p class="label">No. Akaun</p>
+        <p class="value account" data-bind="bankAccount"></p>
+        <p class="small" id="bankHolder" data-bind="bankHolder"></p>
+        <div class="actions">
+          <button id="copyBtn" class="btn btn-ghost" type="button">📋 Salin No. Akaun</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hubungi">
+      <h3 class="title">Hubungi</h3>
+      <div id="contacts" class="contacts"></div>
+    </section>
+
+    <section class="section doa">
+      <h3 class="title">Doa Pengantin</h3>
+      <div class="quote-card">
+        <p class="arabic" lang="ar" dir="rtl">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+        <p class="quote">"Semoga Allah memberkati kamu, melimpahkan keberkatan ke atas kamu, dan menghimpunkan kamu berdua dalam kebaikan."</p>
+        <p class="quote-src">Riwayat Abu Daud &amp; At-Tirmizi</p>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="corner bl" aria-hidden="true"></div>
+      <div class="corner br" aria-hidden="true"></div>
+      <p>Kehadiran dan doa restu anda amat kami hargai.</p>
+      <p class="script big" style="margin-top:1rem"><span class="groom" data-bind="groom"></span> <span class="amp">&amp;</span> <span class="bride" data-bind="bride"></span></p>
+      <div class="flower-row" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <!-- Quick menu along the bottom -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="Menu" hidden>
+    <a href="#majlis"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M3 10h18M8 3v4M16 3v4" /></svg><span>Majlis</span></a>
+    <a href="#lokasi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg><span>Lokasi</span></a>
+    <a href="#rsvp"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="M3.5 7.5 12 13l8.5-5.5" /></svg><span>RSVP</span></a>
+    <a href="#ucapan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.1-4.1A8 8 0 1 1 20 11.5z" /><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01" /></svg><span>Ucapan</span></a>
+    <a href="#hadiah"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="5" rx="1" /><path d="M5 13v7h14v-7M12 8v12M12 8C10.5 4.5 6.5 4.5 7 7c.3 1 2.5 1 5 1zm0 0c1.5-3.5 5.5-3.5 5-1-.3 1-2.5 1-5 1z" /></svg><span>Hadiah</span></a>
+    <a href="#hubungi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg><span>Hubungi</span></a>
+  </nav>
+
+  <!-- Floating controls -->
+  <div class="fab-group" hidden id="fabs">
+    <button id="scrollBtn" class="fab" aria-label="Auto scroll" title="Auto scroll">⏸</button>
+    <button id="musicBtn" class="fab" aria-label="Lagu" title="Lagu">♫</button>
+  </div>
+
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
