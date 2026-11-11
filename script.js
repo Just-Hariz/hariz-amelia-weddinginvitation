@@ -406,6 +406,21 @@ function setMusicUI() {
 song.onChange(setMusicUI);
 musicBtn.addEventListener("click", () => (song.playing ? song.pause() : song.play()));
 
+// Stop the song whenever the invitation isn't on screen (another app or tab, home screen,
+// phone locked) so it never keeps playing in the background. It picks up again on return,
+// but only if it was playing when the guest left.
+let resumeOnReturn = false;
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    resumeOnReturn = song.playing;
+    song.pause();
+  } else if (resumeOnReturn) {
+    resumeOnReturn = false;
+    song.play();
+  }
+});
+addEventListener("pagehide", () => song.pause());
+
 // ---- Auto scroll ----
 // Scrolls slowly down the page; pauses when the guest scrolls/touches, resumes after a few idle seconds.
 // Stops completely while the guest is filling in a form or using the bottom menu.
