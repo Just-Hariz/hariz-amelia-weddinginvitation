@@ -322,6 +322,17 @@ main { max-width: 560px; margin: 0 auto; padding: 0 16px; }
 .wish p { margin: .2rem 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .wishes .empty { text-align: center; color: var(--muted); font-style: italic; }
 
+/* ---------- Memori majlis tunang ---------- */
+.gallery { display: grid; gap: 14px; }
+.gallery a {
+  display: block; border-radius: 20px; overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 1px var(--gold-soft), 0 14px 30px -20px rgba(59, 43, 48, .6);
+  transition: transform .3s;
+}
+.gallery a:hover { transform: translateY(-2px); }
+.gallery img { display: block; width: 100%; height: auto; }
+
 /* ---------- Hadiah ---------- */
 .gift { margin-top: 1.25rem; }
 .qr {

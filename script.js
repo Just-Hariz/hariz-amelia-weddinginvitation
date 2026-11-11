@@ -34,7 +34,7 @@ const CONFIG = {
   song: {
     soundcloud: "https://soundcloud.com/rizqy-fajar-satria/barasuara-terbuang-dalam-waktu?si=0caa2f78502444c4a0bc01c14836bc67&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
     file: "",
-    start: 175,
+    start: 155,
     end: 275,
   },
 
@@ -55,7 +55,7 @@ const CONFIG = {
     { name: "Norakuma Binti Hashim", role: "Ibu pengantin perempuan", phone: "60174476615" },
   ],
 
-  autoScrollSpeed: 40, // pixels per second
+  autoScrollSpeed: 60, // pixels per second
 };
 // =====================================================================
 
