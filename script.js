@@ -48,7 +48,7 @@ const CONFIG = {
     name: "Maybank",
     account: "151213334682",
     holder: "Izreen Amelia binti Mohd Ismail", // account holder (the bride)
-    qr: "assets/qr_mia.png", // DuitNow QR image saved from your banking app
+    qr: "assets/qr-duitnow.png", // DuitNow QR (smaller copy of assets/qr_mia.png)
   },
 
   contacts: [
