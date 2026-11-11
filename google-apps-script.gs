@@ -9,8 +9,8 @@
 // After editing this code later: Deploy → Manage deployments → Edit → Version: New version
 // (keeps the same /exec link).
 //
-// Approving ucapan: new wishes are hidden until you tick the "Papar" checkbox
-// on their row in the "Ucapan" tab. Untick to hide one again.
+// Showing ucapan: new wishes appear on the invitation straight away ("Papar" is ticked).
+// To hide one, untick its "Papar" checkbox in the "Ucapan" tab.
 
 // The spreadsheet to write to: the long ID in its link, docs.google.com/spreadsheets/d/<ID>/edit
 const SHEET_ID = "1FXTmgTb9-DHjO7Kt8Q5wKkEgQpTzsnR5nX3UxL7HSso";
@@ -35,8 +35,8 @@ function clean(value, max) {
 
 function addUcapan(name, message) {
   const sh = sheet("Ucapan", UCAPAN_HEADERS);
-  sh.appendRow([new Date(), clean(name, 100), clean(message, 500), false]);
-  sh.getRange(sh.getLastRow(), 4).insertCheckboxes();
+  sh.appendRow([new Date(), clean(name, 100), clean(message, 500), true]);
+  sh.getRange(sh.getLastRow(), 4).insertCheckboxes().check(); // insertCheckboxes() unticks, so tick again
 }
 
 function doPost(e) {

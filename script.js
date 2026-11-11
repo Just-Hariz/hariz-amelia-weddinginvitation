@@ -269,9 +269,7 @@ wishForm.addEventListener("submit", async (e) => {
     wishes = [{ name: data.name, message: data.message }, ...wishes];
     renderWishes(wishes);
     wishForm.reset();
-    setStatus(wishForm, CONFIG.scriptUrl
-      ? "Terima kasih! Ucapan anda akan dipaparkan selepas disemak."
-      : "Terima kasih atas ucapan anda.");
+    setStatus(wishForm, "Terima kasih atas ucapan anda.");
   };
 
   if (!CONFIG.scriptUrl) {
