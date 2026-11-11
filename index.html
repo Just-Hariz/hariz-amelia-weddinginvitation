@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Walimatulurus Hariz &amp; Amelia</title>
   <meta name="description" content="Jemputan ke majlis perkahwinan Hariz &amp; Amelia, 2 Januari 2027, Teluk Intan." />
-  <meta name="theme-color" content="#fff4ec" />
+  <meta name="theme-color" content="#fffcfa" />
 
   <!-- Link preview card for WhatsApp, Facebook, Telegram etc.
        Uses the Cloudflare Pages address; change it here if the site moves (keep the trailing /). -->
@@ -19,58 +19,14 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Amiri&family=Great+Vibes&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="locked">
 
-  <!-- Flower shapes, reused everywhere with <use href="#name">. Colours come from --petal, --center and --leaf. -->
+  <!-- Outline icons, reused with <use href="#i-name"> -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
-      <symbol id="daisy" viewBox="0 0 100 100">
-        <g fill="var(--petal, #f06292)">
-          <ellipse cx="50" cy="24" rx="10" ry="20" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(45 50 50)" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(90 50 50)" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(135 50 50)" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(180 50 50)" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(225 50 50)" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(270 50 50)" />
-          <ellipse cx="50" cy="24" rx="10" ry="20" transform="rotate(315 50 50)" />
-        </g>
-        <circle cx="50" cy="50" r="13" fill="var(--center, #ffe082)" />
-        <circle cx="46" cy="46" r="4" fill="#fff" opacity=".6" />
-      </symbol>
-
-      <symbol id="blossom" viewBox="0 0 100 100">
-        <g fill="var(--petal, #ba68c8)">
-          <circle cx="50" cy="29" r="18" />
-          <circle cx="70" cy="43.5" r="18" />
-          <circle cx="62.3" cy="67" r="18" />
-          <circle cx="37.7" cy="67" r="18" />
-          <circle cx="30" cy="43.5" r="18" />
-        </g>
-        <circle cx="50" cy="50" r="11" fill="var(--center, #fff59d)" />
-      </symbol>
-
-      <symbol id="swirl" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="var(--petal, #ff8a80)" />
-        <path d="M45 50 a5 5 0 1 1 10 0 a10 10 0 1 1 -20 0 a15 15 0 1 1 30 0 a20 20 0 1 1 -40 0"
-              fill="none" stroke="var(--center, #c2185b)" stroke-width="4" stroke-linecap="round" opacity=".55" />
-      </symbol>
-
-      <symbol id="tulip" viewBox="0 0 100 100">
-        <path d="M50 62 C50 75 48 88 50 98" fill="none" stroke="var(--leaf, #66bb6a)" stroke-width="4" stroke-linecap="round" />
-        <path d="M50 92 C34 88 26 76 26 64 C40 68 48 78 50 92Z" fill="var(--leaf, #66bb6a)" />
-        <path d="M28 22 C26 50 34 66 50 66 C66 66 74 50 72 22 L61 36 L50 18 L39 36Z" fill="var(--petal, #ffb74d)" />
-        <path d="M50 18 L39 36 L28 22 C27 40 32 56 44 63Z" fill="var(--center, #fff)" opacity=".3" />
-      </symbol>
-
-      <symbol id="leaf" viewBox="0 0 100 100">
-        <path d="M50 96 C18 70 22 30 50 4 C78 30 82 70 50 96Z" fill="var(--leaf, #81c784)" />
-        <path d="M50 90 V16" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" />
-      </symbol>
-
       <!-- Outline icons for buttons: <svg class="icon"><use href="#i-name" /></svg> -->
       <symbol id="i-mail-open" viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="m3 10.5 9 6 9-6" /></symbol>
       <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M3 10h18M8 3v4M16 3v4" /></symbol>
@@ -94,17 +50,14 @@
   <!-- Cover: opening the invitation starts the song and auto scroll (browsers require a tap before audio can play) -->
   <div id="cover" class="cover">
     <div class="corner tl" aria-hidden="true"></div>
-    <div class="corner tr" aria-hidden="true"></div>
-    <div class="corner bl" aria-hidden="true"></div>
     <div class="corner br" aria-hidden="true"></div>
 
     <div class="cover-inner">
       <p class="eyebrow">Walimatulurus</p>
       <div class="wreath" id="wreath">
-        <h1 class="script">
-          <span class="groom" data-bind="groom"></span>
-          <span class="amp">&amp;</span>
-          <span class="bride" data-bind="bride"></span>
+        <h1>
+          <span class="monogram"><span data-bind="monoGroom"></span><span class="amp">&amp;</span><span data-bind="monoBride"></span></span>
+          <span class="names"><span data-bind="groom"></span> &amp; <span data-bind="bride"></span></span>
         </h1>
       </div>
       <p class="date-line" data-bind="dateLong"></p>
@@ -118,7 +71,8 @@
       <div class="corner tl" aria-hidden="true"></div>
       <div class="corner tr" aria-hidden="true"></div>
       <p class="eyebrow">Walimatulurus</p>
-      <h2 class="script big"><span class="groom" data-bind="groom"></span><br /><span class="amp">&amp;</span><br /><span class="bride" data-bind="bride"></span></h2>
+      <p class="monogram big" aria-hidden="true"><span data-bind="monoGroom"></span><span class="amp">&amp;</span><span data-bind="monoBride"></span></p>
+      <h2 class="display-names"><span class="groom" data-bind="groom"></span> <span class="amp">&amp;</span> <span class="bride" data-bind="bride"></span></h2>
       <p class="date-line" data-bind="dateLong"></p>
       <p class="hijri" data-bind="hijri"></p>
       <p class="venue-line" data-bind="venueName"></p>
@@ -130,13 +84,13 @@
       <p>Dengan segala hormatnya, kami</p>
       <p class="parent-names">
         <span data-bind="brideFather"></span>
-        <span class="amp script">&amp;</span>
+        <span class="amp">&amp;</span>
         <span data-bind="brideMother"></span>
       </p>
       <p>menjemput<br />Dato' | Datin | Tuan | Puan | Encik | Cik<br />seisi keluarga ke majlis perkahwinan puteri kami</p>
-      <p class="script name bride" data-bind="brideFull"></p>
+      <p class="name bride" data-bind="brideFull"></p>
       <p class="with">dengan pasangannya</p>
-      <p class="script name groom" data-bind="groomFull"></p>
+      <p class="name groom" data-bind="groomFull"></p>
     </section>
 
     <section class="section">
@@ -164,20 +118,6 @@
           <a id="icsBtn" class="btn btn-ghost" href="wedding.ics"><svg class="icon" aria-hidden="true"><use href="#i-calendar-plus" /></svg> Apple Calendar <small>(iOS)</small></a>
         </div>
       </div>
-    </section>
-
-    <section class="section dresscode">
-      <h3 class="title">Kod Pakaian</h3>
-      <a href="assets/kod-pakaian.webp" target="_blank" rel="noopener" class="dress-photo">
-        <img src="assets/kod-pakaian.webp" width="1056" height="588" loading="lazy"
-             alt="Contoh pakaian tona nude: lelaki berkemeja dan berbatik, wanita berbaju kurung" />
-      </a>
-      <p class="dress-name">Tona Nude</p>
-      <div class="swatches" aria-label="Warna nude: coklat, mocha, nude, beige, krim">
-        <span style="--c:#5a3b30"></span><span style="--c:#8a5f4e"></span><span style="--c:#b8927a"></span><span style="--c:#dcc2a8"></span><span style="--c:#f2e3d3"></span>
-      </div>
-      <p class="small">Coklat · Mocha · Nude · Beige · Krim</p>
-      <p class="small">Lelaki: Kemeja / Batik &nbsp;·&nbsp; Wanita: Baju Kurung</p>
     </section>
 
     <section class="section">
@@ -287,7 +227,8 @@
       <div class="corner bl" aria-hidden="true"></div>
       <div class="corner br" aria-hidden="true"></div>
       <p>Kehadiran dan doa restu anda amat kami hargai.</p>
-      <p class="script big" style="margin-top:1rem"><span class="groom" data-bind="groom"></span> <span class="amp">&amp;</span> <span class="bride" data-bind="bride"></span></p>
+      <p class="monogram big" aria-hidden="true"><span data-bind="monoGroom"></span><span class="amp">&amp;</span><span data-bind="monoBride"></span></p>
+      <p class="display-names"><span class="groom" data-bind="groom"></span> <span class="amp">&amp;</span> <span class="bride" data-bind="bride"></span></p>
       <div class="flower-row" aria-hidden="true"></div>
     </section>
   </main>

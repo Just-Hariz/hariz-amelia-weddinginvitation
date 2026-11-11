@@ -2,6 +2,7 @@
 const CONFIG = {
   groom: "Hariz",
   bride: "Amelia",
+  monogram: ["H", "M"], // initials shown large on the cover, top and closing
   groomFull: "Mohammad Hariz Bin Mohammad Nizam",
   brideFull: "Izreen Amelia binti Mohd Ismail",
   brideFather: "Mohd Ismail Bin Ibrahim",
@@ -46,7 +47,7 @@ const CONFIG = {
   bank: {
     name: "Maybank",
     account: "151213334682",
-    holder: "",                  // account holder's name, e.g. "Izreen Amelia binti Mohd Ismail"
+    holder: "Izreen Amelia binti Mohd Ismail", // account holder (the bride)
     qr: "assets/qr-duitnow.png", // DuitNow QR image saved from your banking app
   },
 
@@ -74,6 +75,8 @@ const values = {
   ...CONFIG,
   dateLong: fmtDate,
   timeRange: `${fmtTime(startDate)} – ${fmtTime(endDate)}`,
+  monoGroom: CONFIG.monogram[0],
+  monoBride: CONFIG.monogram[1],
   bankName: CONFIG.bank.name,
   bankAccount: CONFIG.bank.account,
   bankHolder: CONFIG.bank.holder,
@@ -84,7 +87,7 @@ document.querySelectorAll("[data-bind]").forEach((el) => {
 $("bankHolder").hidden = !CONFIG.bank.holder;
 
 // ---- Aturcara ----
-const DOTS = ["#e2558f", "#f7a928", "#3fb3e6", "#8e5cc4", "#5fbf7f"];
+const DOTS = ["#c9a24a", "#d98ba0", "#c9a24a", "#d98ba0", "#c9a24a"];
 CONFIG.aturcara.forEach(([time, item], i) => {
   const li = document.createElement("li");
   li.style.setProperty("--dot", DOTS[i % DOTS.length]);
@@ -125,82 +128,59 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-// ---- Whimsical flowers ----
-// Colour pairs for petals and centres; shapes live in the <svg><defs> at the top of index.html.
-const BLOOMS = [
-  { petal: "#f06292", center: "#ffe082" }, // pink
-  { petal: "#ffb74d", center: "#e65100" }, // orange
-  { petal: "#ba68c8", center: "#fff59d" }, // purple
-  { petal: "#4fc3f7", center: "#fffde7" }, // sky
-  { petal: "#ffd54f", center: "#ff7043" }, // sunflower
-  { petal: "#ff8a80", center: "#c2185b" }, // coral
-];
-const LEAVES = ["#81c784", "#66bb6a", "#a5d6a7"];
+// ---- Real flowers ----
+// CC0 photos (rawpixel, StockSnap) cut out into assets/flowers.
+const FLOWER = (name) => `assets/flowers/${name}.webp`;
+const ROSES = ["rose-blush", "rose-pink"];
 
-function flower(type, vars) {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 100 100");
-  svg.classList.add("bloom");
-  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-  use.setAttribute("href", `#${type}`);
-  svg.append(use);
-  Object.entries(vars).forEach(([k, v]) => svg.style.setProperty(`--${k}`, v));
-  return svg;
+function bloom(name, vars = {}) {
+  const img = document.createElement("img");
+  img.src = FLOWER(name);
+  img.alt = "";
+  img.className = "bloom";
+  img.decoding = "async";
+  Object.entries(vars).forEach(([k, v]) => img.style.setProperty(`--${k}`, v));
+  return img;
 }
-const colours = (i) => ({ ...BLOOMS[i % BLOOMS.length], leaf: LEAVES[i % LEAVES.length] });
 
-// Corner bouquets: [shape, x, y, size, rotation, colour]
-const CORNER = [
-  ["leaf", 6, 62, 56, -55, 0],
-  ["leaf", 66, 0, 52, 50, 1],
-  ["leaf", 104, 34, 34, 80, 2],
-  ["daisy", 2, 2, 76, 0, 0],
-  ["swirl", 60, 44, 50, 20, 2],
-  ["blossom", 14, 84, 42, 15, 4],
-  ["blossom", 108, 4, 30, 30, 3],
-  ["daisy", 62, 96, 26, 10, 5],
+// Peony sprays in the corners
+document.querySelectorAll(".corner").forEach((corner) => corner.append(bloom("peonies")));
+
+// Two crescents of roses framing the monogram on the cover: [angle in degrees, size in px, rose]
+const CRESCENT = [
+  [196, 34, 1], [214, 54, 0], [236, 44, 1], [255, 32, 0], [271, 24, 1],
+  [16, 34, 1], [34, 54, 0], [56, 44, 1], [75, 32, 0], [91, 24, 1],
 ];
-document.querySelectorAll(".corner").forEach((corner) => {
-  CORNER.forEach(([type, x, y, s, r, c], i) => {
-    corner.append(flower(type, { ...colours(c), x: `${x}px`, y: `${y}px`, s: `${s}px`, r: `${r}deg`, dl: `${-i * 0.7}s` }));
-  });
-});
-
-// Ring of flowers and leaves around the names on the cover
 const wreath = $("wreath");
-const RING = 16;
-const ringShapes = ["daisy", "blossom", "swirl", "blossom"];
-for (let i = 0; i < RING; i++) {
-  const a = (i / RING) * Math.PI * 2 - Math.PI / 2;
-  const x = `${50 + 41 * Math.cos(a)}%`;
-  const y = `${50 + 41 * Math.sin(a)}%`;
-  const isLeaf = i % 2 === 1;
-  wreath.append(flower(isLeaf ? "leaf" : ringShapes[(i / 2) % ringShapes.length], {
-    ...colours(Math.floor(i / 2)),
-    x, y,
-    s: isLeaf ? "30px" : i % 4 === 0 ? "52px" : "40px",
-    r: `${(a * 180) / Math.PI + (isLeaf ? 0 : 20)}deg`,
-    dl: `${-i * 0.4}s`,
+CRESCENT.forEach(([deg, s, r], i) => {
+  const a = (deg * Math.PI) / 180;
+  wreath.append(bloom(ROSES[r], {
+    x: `${50 + 43 * Math.cos(a)}%`,
+    y: `${50 + 43 * Math.sin(a)}%`,
+    s: `${s}px`,
+    r: `${deg}deg`,
+    dl: `${-i * 0.5}s`,
   }));
-}
-
-// Little rows of flowers used as dividers
-const ROW = [["tulip", 36], ["blossom", 24], ["daisy", 42], ["blossom", 24], ["tulip", 36]];
-document.querySelectorAll(".flower-row").forEach((row, r) => {
-  ROW.forEach(([type, s], i) => row.append(flower(type, { ...colours(r + i), s: `${s}px`, dl: `${-i * 0.5}s` })));
 });
 
-// Petals drifting down
+// Small trio of roses used as dividers
+const ROW = [["rose-pink", 26], ["rose-blush", 40], ["rose-pink", 26]];
+document.querySelectorAll(".flower-row").forEach((row) => {
+  ROW.forEach(([name, s], i) => row.append(bloom(name, { s: `${s}px`, dl: `${-i * 0.6}s` })));
+});
+
+// Rose petals drifting down
 const petals = $("petals");
-for (let i = 0; i < 18; i++) {
-  const p = document.createElement("span");
+for (let i = 0; i < 16; i++) {
+  const p = document.createElement("img");
+  p.src = FLOWER(`petal-${(i % 8) + 1}`);
+  p.alt = "";
   p.className = "petal";
   const vars = {
     l: `${Math.random() * 100}%`,
-    w: `${10 + Math.random() * 10}px`,
-    c: BLOOMS[i % BLOOMS.length].petal,
-    t: `${9 + Math.random() * 9}s`,
-    dl: `${-Math.random() * 18}s`,
+    w: `${14 + Math.random() * 12}px`,
+    t: `${10 + Math.random() * 9}s`,
+    dl: `${-Math.random() * 19}s`,
     sx: `${(Math.random() - 0.5) * 160}px`,
   };
   Object.entries(vars).forEach(([k, v]) => p.style.setProperty(`--${k}`, v));
@@ -248,7 +228,7 @@ rsvpForm.addEventListener("submit", async (e) => {
 });
 
 const wishList = $("wishes");
-const TONES = ["#e2558f", "#8e5cc4", "#f08a1c", "#1f8fc2", "#4caf6e"];
+const TONES = ["#b5566f", "#8f6b22", "#c4687f", "#a8842f", "#b5566f"];
 function renderWishes(list) {
   wishList.replaceChildren();
   if (!list.length) {
