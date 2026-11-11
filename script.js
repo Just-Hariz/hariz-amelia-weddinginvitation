@@ -1,7 +1,7 @@
 // ================== EDIT YOUR WEDDING DETAILS HERE ==================
 const CONFIG = {
   groom: "Hariz",
-  bride: "Amelia",
+  bride: "Mia",
   monogram: ["H", "M"], // initials shown large on the cover, top and closing
   groomFull: "Mohammad Hariz Bin Mohammad Nizam",
   brideFull: "Izreen Amelia binti Mohd Ismail",
@@ -38,9 +38,8 @@ const CONFIG = {
     end: 95,
   },
 
-  rsvpBy: "20 Disember 2026",
-  // Paste your Google Apps Script web app URL here (see google-apps-script.gs) to save RSVPs & ucapan
-  // into a Google Sheet. Left empty, guests send their RSVP / ucapan to `whatsapp` instead.
+  // Paste your Google Apps Script web app URL here (see google-apps-script.gs) to save ucapan
+  // into a Google Sheet. Left empty, guests send their ucapan to `whatsapp` instead.
   scriptUrl: "",
   whatsapp: "60XXXXXXXXX", // number with country code, no + or dashes
 
@@ -218,7 +217,7 @@ for (let i = 0; i < 16; i++) {
   petals.append(p);
 }
 
-// ---- RSVP & Ucapan ----
+// ---- Ucapan ----
 // With CONFIG.scriptUrl set, entries are saved to your Google Sheet; otherwise they open WhatsApp.
 const whatsappTo = (text) => window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
 const sendToSheet = (data) =>
@@ -229,34 +228,6 @@ function setStatus(form, text, isError = false) {
   el.textContent = text;
   el.classList.toggle("error", isError);
 }
-
-const rsvpForm = $("rsvpForm");
-rsvpForm.addEventListener("change", () => {
-  $("paxField").hidden = rsvpForm.attend.value !== "Hadir";
-});
-rsvpForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const data = { type: "rsvp", ...Object.fromEntries(new FormData(rsvpForm)) };
-  if (data.attend !== "Hadir") data.pax = "0";
-  const thanks = data.attend === "Hadir" ? "Terima kasih! Kami nantikan kehadiran anda." : "Terima kasih atas makluman anda.";
-
-  if (!CONFIG.scriptUrl) {
-    whatsappTo(`RSVP Walimatulurus ${CONFIG.groom} & ${CONFIG.bride}\nNama: ${data.name}\nTelefon: ${data.phone || "-"}\nKehadiran: ${data.attend}\nBilangan: ${data.pax}`);
-    setStatus(rsvpForm, thanks);
-    return;
-  }
-  const btn = rsvpForm.querySelector("button");
-  btn.disabled = true;
-  try {
-    await sendToSheet(data);
-    rsvpForm.reset();
-    $("paxField").hidden = false;
-    setStatus(rsvpForm, thanks);
-  } catch {
-    setStatus(rsvpForm, "Maaf, tidak dapat dihantar. Sila cuba lagi.", true);
-  }
-  btn.disabled = false;
-});
 
 const wishList = $("wishes");
 const TONES = ["#b5566f", "#8f6b22", "#c4687f", "#a8842f", "#b5566f"];
