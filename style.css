@@ -60,7 +60,7 @@ body.locked { overflow: hidden; height: 100vh; }
   font-size: .5em; margin: 0 .1em;
 }
 /* The M's long entry stroke reads as extra space, so tuck it in slightly */
-.monogram .amp + span { margin-left: -.32em; }
+.monogram .amp + span { margin-left: -.45em; }
 .monogram.big { font-size: clamp(4.6rem, 26vw, 7rem); margin-bottom: .25rem; }
 .display-names {
   font-weight: 400; font-style: italic;
