@@ -32,10 +32,11 @@ const CONFIG = {
   // Song: plays from `start` to `end` (seconds) and loops, so only the chorus is heard.
   // To use your own audio file instead of SoundCloud, put it in assets/ and set `file`.
   song: {
-    soundcloud: "https://soundcloud.com/rizqy-fajar-satria/barasuara-terbuang-dalam-waktu?si=0caa2f78502444c4a0bc01c14836bc67&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    soundcloud: "https://soundcloud.com/friday-playlist/coming-up-roses-slowed-5?si=9a3cc2fd01264e4aa9521b5cd054c9c7&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
     file: "",
-    start: 155,
-    end: 275,
+    start: 180,
+    end: 277,
+    volume: 50, // percent
   },
 
   // Paste your Google Apps Script web app URL here (see google-apps-script.gs) to save ucapan
@@ -340,7 +341,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll(".section").forEach((s) => io.observe(s));
 
 // ---- Song (chorus only, looping) ----
-function soundcloudPlayer({ soundcloud, start, end }) {
+function soundcloudPlayer({ soundcloud, start, end, volume }) {
   const listeners = [];
   const player = { playing: false, play() { }, pause() { }, onChange: (f) => listeners.push(f) };
   if (typeof SC === "undefined") return player; // SoundCloud script didn't load (offline)
@@ -360,7 +361,7 @@ function soundcloudPlayer({ soundcloud, start, end }) {
 
   widget.bind(E.READY, () => {
     ready = true;
-    widget.setVolume(80);
+    widget.setVolume(volume);
     if (wanted) widget.play();
   });
   widget.bind(E.PLAY, () => emit(true));
@@ -375,8 +376,9 @@ function soundcloudPlayer({ soundcloud, start, end }) {
   return player;
 }
 
-function filePlayer({ file, start, end }) {
+function filePlayer({ file, start, end, volume }) {
   const audio = new Audio(file);
+  audio.volume = volume / 100;
   const listeners = [];
   const player = {
     playing: false,
