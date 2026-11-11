@@ -4,7 +4,7 @@ const CONFIG = {
   bride: "Mia",
   monogram: ["H", "M"], // initials shown large on the cover, top and closing
   groomFull: "Mohammad Hariz Bin Mohammad Nizam",
-  brideFull: "Izreen Amelia binti Mohd Ismail",
+  brideFull: "Dr. Izreen Amelia binti Mohd Ismail",
   brideFather: "Mohd Ismail Bin Ibrahim",
   brideMother: "Norakuma Binti Hashim",
   quote: "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.",
@@ -32,10 +32,10 @@ const CONFIG = {
   // Song: plays from `start` to `end` (seconds) and loops, so only the chorus is heard.
   // To use your own audio file instead of SoundCloud, put it in assets/ and set `file`.
   song: {
-    soundcloud: "https://soundcloud.com/muhamad-taufan-790088273/sampai-jadi-debu-banda-naira?si=eea90aa7a08547e19eadf99b785ba5d9&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    soundcloud: "https://soundcloud.com/rizqy-fajar-satria/barasuara-terbuang-dalam-waktu?si=0caa2f78502444c4a0bc01c14836bc67&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
     file: "",
-    start: 0,
-    end: 95,
+    start: 175,
+    end: 275,
   },
 
   // Paste your Google Apps Script web app URL here (see google-apps-script.gs) to save ucapan
