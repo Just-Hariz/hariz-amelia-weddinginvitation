@@ -42,16 +42,22 @@ body.locked { overflow: hidden; height: 100vh; }
 .monogram {
   display: block; margin: 0;
   font-family: "Pinyon Script", "Playfair Display", cursive; font-weight: 400; font-style: normal;
-  font-size: clamp(3.8rem, 18vw, 5.2rem); line-height: 1.1;
-  padding: 0 .3em .05em; /* room for the script swashes so the gold gradient isn't clipped */
+  font-size: clamp(3.8rem, 18vw, 5.2rem); line-height: 1;
+  white-space: nowrap;
+}
+/* Each letter is sized and nudged to its ink by alignMonogram() in script.js */
+.monogram > span {
+  display: inline-block; position: relative;
+  margin: 0 .02em; padding: .2em 0; /* padding keeps swashes inside the gold fill */
   background: linear-gradient(135deg, #a77d2c 0%, #e9cf86 45%, #b8892e 70%, #d9b76a 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .monogram .amp {
   font-family: "Playfair Display", Georgia, serif; font-style: italic;
-  font-size: .5em; margin: 0 .12em; vertical-align: .3em;
-  background: inherit; -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-size: .5em; margin: 0 .1em;
 }
+/* The M's long entry stroke reads as extra space, so tuck it in slightly */
+.monogram .amp + span { margin-left: -.2em; }
 .monogram.big { font-size: clamp(4.6rem, 26vw, 7rem); margin-bottom: .25rem; }
 .display-names {
   font-weight: 400; font-style: italic;

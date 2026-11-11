@@ -34,8 +34,8 @@ const CONFIG = {
   song: {
     soundcloud: "https://soundcloud.com/muhamad-taufan-790088273/sampai-jadi-debu-banda-naira?si=eea90aa7a08547e19eadf99b785ba5d9&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
     file: "",
-    start: 120,
-    end: 180,
+    start: 0,
+    end: 95,
   },
 
   rsvpBy: "20 Disember 2026",
@@ -48,13 +48,12 @@ const CONFIG = {
     name: "Maybank",
     account: "151213334682",
     holder: "Izreen Amelia binti Mohd Ismail", // account holder (the bride)
-    qr: "assets/qr-duitnow.png", // DuitNow QR image saved from your banking app
+    qr: "assets/qr_mia.png", // DuitNow QR image saved from your banking app
   },
 
   contacts: [
-    { name: "Mohd Ismail Bin Ibrahim", role: "Bapa pengantin perempuan", phone: "60XXXXXXXXX" },
-    { name: "Norakuma Binti Hashim", role: "Ibu pengantin perempuan", phone: "60XXXXXXXXX" },
-    { name: "Hariz", role: "Pengantin lelaki", phone: "60XXXXXXXXX" },
+    { name: "Mohd Ismail Bin Ibrahim", role: "Bapa pengantin perempuan", phone: "60124263500" },
+    { name: "Norakuma Binti Hashim", role: "Ibu pengantin perempuan", phone: "60174476615" },
   ],
 
   autoScrollSpeed: 40, // pixels per second
@@ -85,6 +84,38 @@ document.querySelectorAll("[data-bind]").forEach((el) => {
   el.textContent = values[el.dataset.bind] ?? "";
 });
 $("bankHolder").hidden = !CONFIG.bank.holder;
+
+// ---- Monogram alignment ----
+// Script capitals have uneven heights and long swashes, so line the letters up by their actual ink:
+// each letter's box is made exactly as wide as its ink, and the letters are nudged so their ink
+// centres sit on one line (the "&" is centred on the same line).
+function alignMonogram(el) {
+  const ctx = document.createElement("canvas").getContext("2d");
+  const parentSize = parseFloat(getComputedStyle(el).fontSize);
+  const parts = [...el.children].map((span) => {
+    const cs = getComputedStyle(span);
+    ctx.font = `${cs.fontStyle} ${cs.fontWeight} 100px ${cs.fontFamily}`;
+    const t = ctx.measureText(span.textContent);
+    return {
+      span,
+      k: parseFloat(cs.fontSize) / parentSize, // the "&" is smaller than the letters
+      left: t.actualBoundingBoxLeft / 100,
+      right: t.actualBoundingBoxRight / 100,
+      mid: (t.actualBoundingBoxDescent - t.actualBoundingBoxAscent) / 200, // ink centre vs baseline, in em
+    };
+  });
+  const letters = parts.filter((p) => !p.span.classList.contains("amp"));
+  const line = letters.reduce((sum, p) => sum + p.mid * p.k, 0) / letters.length;
+  parts.forEach(({ span, k, left, right, mid }) => {
+    span.style.width = `${left + right}em`;
+    span.style.textIndent = `${left}em`;
+    span.style.top = `${(line - mid * k) / k}em`;
+  });
+}
+Promise.all([
+  document.fonts.load('100px "Pinyon Script"'),
+  document.fonts.load('italic 100px "Playfair Display"'),
+]).then(() => document.querySelectorAll(".monogram").forEach(alignMonogram));
 
 // ---- Aturcara ----
 const DOTS = ["#c9a24a", "#d98ba0", "#c9a24a", "#d98ba0", "#c9a24a"];
