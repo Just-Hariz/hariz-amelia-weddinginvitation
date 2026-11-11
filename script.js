@@ -40,7 +40,7 @@ const CONFIG = {
 
   // Paste your Google Apps Script web app URL here (see google-apps-script.gs) to save ucapan
   // into a Google Sheet. Left empty, guests send their ucapan to `whatsapp` instead.
-  scriptUrl: "https://script.google.com/macros/s/AKfycbxgpECOLMmEr4gtj92elwwaqWWDzjVMFLJz5sGxxEmJmN4m7xGE-7JEFs0ntx310q__/exec",
+  scriptUrl: "https://script.google.com/macros/s/AKfycbwXrdoqXrvqM1f9lMhZJsBmk8HuwCMfB43SCHZfHDlDQjlOg6Qb-ROlC8P65ALJkkNu/exec",
   whatsapp: "60XXXXXXXXX", // number with country code, no + or dashes
 
   bank: {
