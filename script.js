@@ -264,7 +264,7 @@ if (CONFIG.scriptUrl) {
 
 // Slowly scroll the ucapan list while it is on screen. A touch, wheel or hover pauses it;
 // at the end it waits, glides back to the top and starts again.
-const WISH_SPEED = 22; // pixels per second
+const WISH_SPEED = 30; // pixels per second
 let wishPos = 0;
 let wishLastT = 0;
 let wishVisible = false;
