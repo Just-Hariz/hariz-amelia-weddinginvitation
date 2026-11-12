@@ -262,6 +262,39 @@ if (CONFIG.scriptUrl) {
     .catch(() => { });
 }
 
+// Slowly scroll the ucapan list while it is on screen. A touch, wheel or hover pauses it;
+// at the end it waits, glides back to the top and starts again.
+const WISH_SPEED = 22; // pixels per second
+let wishPos = 0;
+let wishLastT = 0;
+let wishVisible = false;
+let wishHold = 0; // scrolling waits until this timestamp
+let wishPausedUntil = 0;
+new IntersectionObserver(([e]) => { wishVisible = e.isIntersecting; }).observe(wishList);
+const pauseWishes = () => { wishPausedUntil = performance.now() + 4000; };
+["wheel", "touchstart", "pointerenter", "pointermove", "focusin"].forEach((ev) =>
+  wishList.addEventListener(ev, pauseWishes, { passive: true }));
+
+function wishStep(t) {
+  const dt = wishLastT ? Math.min(t - wishLastT, 100) / 1000 : 0;
+  wishLastT = t;
+  const max = wishList.scrollHeight - wishList.clientHeight;
+  if (wishVisible && max > 0 && t > wishHold && t > wishPausedUntil) {
+    if (Math.abs(wishList.scrollTop - wishPos) > 2) wishPos = wishList.scrollTop; // guest scrolled it
+    wishPos = Math.min(max, wishPos + WISH_SPEED * dt);
+    wishList.scrollTop = wishPos;
+    if (wishPos >= max) {
+      wishHold = t + 5000;
+      setTimeout(() => {
+        wishList.scrollTo({ top: 0, behavior: "smooth" });
+        wishPos = 0;
+      }, 2500);
+    }
+  }
+  requestAnimationFrame(wishStep);
+}
+requestAnimationFrame(wishStep);
+
 const wishForm = $("wishForm");
 wishForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -269,6 +302,8 @@ wishForm.addEventListener("submit", async (e) => {
   const done = () => {
     wishes = [{ name: data.name, message: data.message }, ...wishes];
     renderWishes(wishes);
+    wishList.scrollTop = wishPos = 0; // show the new ucapan at the top
+    wishHold = performance.now() + 3000;
     wishForm.reset();
     setStatus(wishForm, "Terima kasih atas ucapan anda.");
   };
