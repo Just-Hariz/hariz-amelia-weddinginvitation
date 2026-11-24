@@ -32,7 +32,7 @@ const CONFIG = {
   // Song: plays from `start` to `end` (seconds) and loops, so only the chorus is heard.
   // To use your own audio file instead of SoundCloud, put it in assets/ and set `file`.
   song: {
-    soundcloud: "https://soundcloud.com/friday-playlist/coming-up-roses-slowed-5?si=9a3cc2fd01264e4aa9521b5cd054c9c7&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    soundcloud: "https://soundcloud.com/cass_kaulitz89/harry-styles-coming-up-roses",
     file: "",
     start: 180,
     end: 277,
